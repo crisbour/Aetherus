@@ -9,7 +9,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, rust-overlay }: 
+  outputs = { self, nixpkgs, rust-overlay }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
@@ -46,7 +46,8 @@
             cargo-watch
             rust-analyzer
             netcdf
-            cmake # Required for static compile of NetCDF. 
+            hdf5
+            cmake # Required for static compile of NetCDF.
           ];
 
           env = {
